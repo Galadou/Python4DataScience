@@ -1,7 +1,6 @@
 from ft_filter import ft_filter
 import sys
 
-number = 0
 
 def filterString(string, number):
     if (len(string) > number):
@@ -9,23 +8,35 @@ def filterString(string, number):
     else:
         return False
 
+
 def main():
     try:
-        assert len(sys.argv) == 3, "This program accept only 2 arguments."
-        try: 
+        assert len(sys.argv) == 3, "the arguments are bad"
+        try:
             number = int(sys.argv[2])
         except ValueError:
-            raise AssertionError("argument is not an integer")
-        words = sys.argv[1].split()
+            raise AssertionError("the arguments are bad")
+        for c in sys.argv[1]:
+            if c.isalpha() is False and c.isdigit() is False and c != ' ':
+                raise AssertionError("Strings cannot "
+                                     "contain any special characters "
+                                     "(punctuation or invisible).")
+        w = sys.argv[1].split()
+        result = [x for x in ft_filter(lambda s: filterString(s, number), w)]
 
-        result = ft_filter(lambda w :filterString(w, number), words)
-        print(result)
+        i = 0
+        print("[", end='')
+        for words in result:
+            if i > 0:
+                print(", ", end='')
+            print("'" + words + "'", end='')
+            i += 1
+        print("]")
+
     except Exception as error:
         print(f"{type(error)}: {error}")
         return
-    
+
 
 if __name__ == "__main__":
     main()
-
-    #FONCTIONNE PAS
