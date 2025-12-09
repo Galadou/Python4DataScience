@@ -41,6 +41,8 @@ def main():
         print(f"{dot} punctuation marks")
         print(f"{space} spaces")
         print(f"{digit} digits")
+    except KeyboardInterrupt as e:
+        print(f"{type(e)}: {e}")
     except Exception as error:
         print(f"{type(error)}: {error}")
         return

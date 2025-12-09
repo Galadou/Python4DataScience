@@ -63,6 +63,8 @@ def main():
             print(NESTED_MORSE[c], end='')
             i = 1
         print()
+    except KeyboardInterrupt as e:
+        print(f"{type(e)}: {e}")
     except Exception as error:
         print(f"{type(error)} : {error}")
 

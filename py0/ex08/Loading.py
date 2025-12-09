@@ -37,38 +37,38 @@ def ft_tqdm(lst: range) -> None:
     Returns:
         None (generator function: yields items from the iterable).
     """
-    total = len(lst)
-    progress = 0
-    timeStart = os.times()
-    terminalSize = os.get_terminal_size()
-    barWidth = 1
-    last_print = timeStart
+    try:
+        total = len(lst)
+        progress = 0
+        timeStart = os.times()
+        terminalSize = os.get_terminal_size()
+        barWidth = 1
+        last_print = timeStart
 
-    for i, item in enumerate(lst, start=1):
-        progress = int((i / total) * barWidth)
-        progress_bar = f"|{'█' * progress}"
-        percent = int(progress / barWidth * 100)
-        elapsed_time = os.times().elapsed - timeStart.elapsed
-        elapsed_timeFormated = timeFormating(elapsed_time)
+        for i, item in enumerate(lst, start=1):
+            progress = int((i / total) * barWidth)
+            progress_bar = f"|{'█' * progress}"
+            percent = int(progress / barWidth * 100)
+            elapsed_time = os.times().elapsed - timeStart.elapsed
+            elapsed_timeFormated = timeFormating(elapsed_time)
 
-        if (progress != 0 and barWidth != 0):
-            predicted_time = elapsed_time * barWidth / progress
-        else:
-            predicted_time = 0
-        if elapsed_time != 0 and i != 0:
-            speed = i / elapsed_time
-        else:
-            speed = 0
-        predicted_time -= elapsed_time
-        predicted_time_formated = timeFormating(predicted_time)
-        string = (f"| {i}/{total} [{elapsed_timeFormated}<"
-                  f"{predicted_time_formated}, {speed:.2f}it/s]")
-        barWidth = terminalSize.columns - len(string) - 5
+            predicted_time = (elapsed_time * barWidth / progress) if (progress != 0 and barWidth != 0) else 0
+            speed = (i / elapsed_time) if (elapsed_time != 0 and i != 0) else 0
+            predicted_time -= elapsed_time
+            predicted_time_formated = timeFormating(predicted_time)
+            string = (f"| {i}/{total} [{elapsed_timeFormated}<"
+                    f"{predicted_time_formated}, {speed:.2f}it/s]")
+            barWidth = terminalSize.columns - len(string) - 5
 
-        current_time = os.times()
-        if (last_print.elapsed < current_time.elapsed - 0.1) or i == total:
-            print(f"\r{' ' if percent != 100 else ''}"
-                  f"{percent}%{progress_bar}{' ' * int(barWidth - progress)}"
-                  f"{string}", end="",)
-            last_print = os.times()
-        yield item
+            current_time = os.times()
+            if (last_print.elapsed < current_time.elapsed - 0.1) or i == total:
+                print(f"\r{' ' if percent != 100 else ''}"
+                    f"{percent}%{progress_bar}{' ' * int(barWidth - progress)}"
+                    f"{string}", end="",)
+                last_print = os.times()
+            yield item
+
+    except KeyboardInterrupt as e:
+        print(f"{type(e)}: {e}")
+    except Exception as error:
+        print(f"{type(error)} : {error}")

@@ -19,5 +19,5 @@ license = "MIT"
 license-files = ["LICEN[CS]E*"]
 
 [project.urls]
-Homepage = "https://github.com/Galadou/Python4DataScience/py0/ex09"
+Homepage = "https://github.com/Galadou/Python4DataScience/tree/main/py0/ex09"
 Issues = "https://github.com/Galadou/Python4DataScience/issues"

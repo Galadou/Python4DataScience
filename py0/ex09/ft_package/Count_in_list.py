@@ -14,6 +14,11 @@ def count_in_list(lists, str):
     Raises:
         AssertionError: If the first argument (`lists`) is not a list.
     """
-    if type(lists) is not list:
-        raise AssertionError("the arguments are bad")
-    return lists.count(str)
+    try:
+        if type(lists) is not list:
+            raise AssertionError("the arguments are bad")
+        return lists.count(str)
+    except KeyboardInterrupt as e:
+        print(f"{type(e)}: {e}")
+    except Exception as error:
+        print(f"{type(error)} : {error}")
