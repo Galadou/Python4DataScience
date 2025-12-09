@@ -1,6 +1,15 @@
 import sys
 
+
 def main():
+    """
+    Counts and displays the number of different character types in a text.
+
+    - Accepts 0 or 1 argument; if none is provided, reads from input().
+    - Counts uppercase and lowercase letters, digits, spaces, and punctuation.
+    - Prints a summary of the counts.
+    - Prints an error if more than one argument is provided.
+    """
     try:
         assert len(sys.argv) <= 2, "more than one argument is provided"
         if (len(sys.argv)) == 1:
@@ -35,6 +44,7 @@ def main():
     except Exception as error:
         print(f"{type(error)}: {error}")
         return
+
 
 if __name__ == "__main__":
     main()

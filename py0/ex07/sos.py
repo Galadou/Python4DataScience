@@ -2,6 +2,13 @@ import sys
 
 
 def main():
+    """
+    Converts a single command-line argument to Morse code.
+
+    - Expects exactly one argument containing letters, digits, or spaces.
+    - Prints the corresponding Morse code, separating characters by spaces.
+    - Prints an error if the argument is invalid.
+    """
     try:
         if len(sys.argv) != 2:
             raise AssertionError("the arguments are bad")

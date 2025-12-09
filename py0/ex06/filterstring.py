@@ -3,13 +3,30 @@ import sys
 
 
 def filterString(string, number):
-    if (len(string) > number):
-        return True
-    else:
-        return False
+    """
+    Check if the length of a string is greater than a given number.
+
+    Parameters:
+        string (str): The string to check.
+        number (int): The length threshold.
+
+    Returns:
+        bool: True if len(string) > number, False otherwise.
+    """
+    return (len(string) > number)
 
 
 def main():
+    """
+    Filters words from a command-line string based on length.
+
+    - Expects exactly 2 arguments: a string and a number.
+    - Validates that the string contains only letters, digits, or spaces.
+    - Converts the string into a list of words.
+    - Uses ft_filter with filterString to select words longer than the number.
+    - Prints the resulting list of words in a Python-style list format.
+    - Prints an error if any validation fails.
+    """
     try:
         assert len(sys.argv) == 3, "the arguments are bad"
         try:
