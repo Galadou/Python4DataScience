@@ -1,6 +1,6 @@
 import sys
 
-try :
+try:
     assert len(sys.argv) <= 2, "more than one argument is provided"
     if (len(sys.argv) == 1):
         exit(1)

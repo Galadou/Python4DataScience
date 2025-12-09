@@ -52,19 +52,25 @@ def ft_tqdm(lst: range) -> None:
             elapsed_time = os.times().elapsed - timeStart.elapsed
             elapsed_timeFormated = timeFormating(elapsed_time)
 
-            predicted_time = (elapsed_time * barWidth / progress) if (progress != 0 and barWidth != 0) else 0
-            speed = (i / elapsed_time) if (elapsed_time != 0 and i != 0) else 0
+            if (progress != 0 and barWidth != 0):
+                predicted_time = elapsed_time * barWidth / progress
+            else:
+                predicted_time = 0
+            if elapsed_time != 0 and i != 0:
+                speed = i / elapsed_time
+            else:
+                speed = 0
             predicted_time -= elapsed_time
             predicted_time_formated = timeFormating(predicted_time)
             string = (f"| {i}/{total} [{elapsed_timeFormated}<"
-                    f"{predicted_time_formated}, {speed:.2f}it/s]")
+                      f"{predicted_time_formated}, {speed:.2f}it/s]")
             barWidth = terminalSize.columns - len(string) - 5
 
             current_time = os.times()
             if (last_print.elapsed < current_time.elapsed - 0.1) or i == total:
-                print(f"\r{' ' if percent != 100 else ''}"
-                    f"{percent}%{progress_bar}{' ' * int(barWidth - progress)}"
-                    f"{string}", end="",)
+                print(f"\r{' ' if percent != 100 else ''}{percent}"
+                      f"%{progress_bar}{' ' * int(barWidth - progress)}"
+                      f"{string}", end="",)
                 last_print = os.times()
             yield item
 
