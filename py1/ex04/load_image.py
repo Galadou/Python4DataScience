@@ -4,7 +4,6 @@ import numpy as np
 from rotate import rotate
 
 def main():
-    # your tests and your error handling
     try:
         img = Image.open("animal.jpeg")
         if (not img or img.format not in ("JPEG")):

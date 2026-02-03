@@ -8,7 +8,6 @@ from zoom import zoom
 #!Attention, WebAgg serv au lieu du truc natif de python sous linux je crois
 
 def main():
-    # your tests and your error handling
     try:
         img = Image.open("animal.jpeg")
         if (not img or img.format not in ("JPEG")):
