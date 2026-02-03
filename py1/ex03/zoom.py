@@ -4,7 +4,7 @@ import numpy as np
 def zoom(img_np: np.array, zoom_coef: int) -> np.array:
 
         if (zoom_coef < 1):
-            raise AssertionError("zoom_coed cannot be less than 1.")
+            raise AssertionError("zoom_coef cannot be less than 1.")
         # array[start_y:end_y, start_x:end_x]
         lenY = img_np.shape[0]
         totalenY = int(lenY / zoom_coef)
