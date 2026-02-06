@@ -3,6 +3,15 @@ import numpy as np
 
 
 def ft_load(path: str) -> np.array:
+    """
+    Load an image, and return it as a numpy.array.
+
+    Args:
+        path (str): The path of the image.
+
+    Returns:
+        np.array: A 3D array representing the RGB image.
+    """
     try:
         img = Image.open(path)
         if (not img or img.format not in ("JPG", "JPEG")):

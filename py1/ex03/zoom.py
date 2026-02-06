@@ -1,20 +1,26 @@
 import numpy as np
+import matplotlib.pyplot as plt
+from PIL import Image
+from load_image import load_image
 
+def main():
+    try:
 
-def zoom(img_np: np.array, zoom_coef: int) -> np.array:
+        img_np = load_image()
+        print(f"The shape of image is: {img_np.shape}")
+        print(img_np)
 
-        if (zoom_coef < 1):
-            raise AssertionError("zoom_coef cannot be less than 1.")
-        # array[start_y:end_y, start_x:end_x]
-        lenY = img_np.shape[0]
-        totalenY = int(lenY / zoom_coef)
-        startY = int((lenY / 2) - (totalenY / 2))
-        endY = int((lenY / 2) + (totalenY / 2))
+        result_zoom = img_np[100:500, 400:800, 0:1]
 
-        lenX = img_np.shape[1]
-        totalenX = int(lenX / zoom_coef)
-        startX = int((lenX / 2) - (totalenX / 2))
-        endX = int((lenX / 2) + (totalenX / 2))
+        print(f"New shape after slicing: {result_zoom.shape} or {result_zoom.shape[:2]}")
+        print(result_zoom)
+        plt.imshow(result_zoom, cmap='gray')
+        plt.show()
 
-        result_np = img_np[startY: endY, startX: endX]
-        return result_np
+    except AssertionError as error:
+        print(f"AssertionError: {error}")
+    except Exception as error:
+        print(f"{type(error)} : {error}")
+
+if __name__ == "__main__":
+    main()
