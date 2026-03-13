@@ -5,7 +5,7 @@ import pandas as pd
 
 def main():
     """
-    Load life_expectancy_years.csv, and create a plot with it.
+    Load life_expectancy_years.csv, and create a plot with it, using 'France'.
     """
     try:
         data = load("life_expectancy_years.csv")
