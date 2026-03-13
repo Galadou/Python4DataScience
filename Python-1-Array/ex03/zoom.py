@@ -3,6 +3,10 @@ from load_image import load_image
 
 
 def main():
+    """
+    Load animal.jpeg, display its shape, slice the image to make a zoom,
+    and display its shape after the slice. Display the sliced img, in grey.
+    """
     try:
 
         img_np = load_image()
@@ -16,8 +20,8 @@ def main():
         plt.imshow(zoom, cmap='gray')
         plt.show()
 
-    except AssertionError as error:
-        print(f"AssertionError: {error}")
+    except KeyboardInterrupt as error:
+        print(f"{type(error)} : Interrupted.")
     except Exception as error:
         print(f"{type(error)} : {error}")
 

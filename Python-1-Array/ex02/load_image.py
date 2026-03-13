@@ -4,11 +4,10 @@ import numpy as np
 
 def ft_load(path: str) -> np.array:
     """
-    Load an image, and return it as a numpy.array.
+    Load an image (jpg or jpeg), and return it as a numpy.array.
 
     Args:
         path (str): The path of the image.
-
     Returns:
         np.array: A 3D array representing the RGB image.
     """

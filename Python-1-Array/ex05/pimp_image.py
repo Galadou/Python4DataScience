@@ -4,11 +4,10 @@ import matplotlib.pyplot as plt
 
 def ft_invert(array: np.array) -> np.array:
     """
-    Inverts the color of the image received.
+Inverts the color of the image received.
     """
-    # les canaux à 0 deviennt 255 et à l'inverse les 255 deviennent 0
+    # Channels with 0 become 255 and conversely, channels with 255 become 0
     img_negatif = 255 - array
-    print(f"shape invert {img_negatif.shape}")
     plt.imshow(img_negatif)
     plt.show()
     return img_negatif
@@ -21,7 +20,6 @@ def ft_red(array: np.array) -> np.array:
     red_filter = array.copy()
     red_filter[:, :, 1] = 0
     red_filter[:, :, 2] = 0
-    print(f"shape red {red_filter.shape}")
     plt.imshow(red_filter)
     plt.show()
     return red_filter
@@ -34,7 +32,6 @@ def ft_green(array: np.array) -> np.array:
     green_filter = array.copy()
     green_filter[:, :, 0] = 0
     green_filter[:, :, 2] = 0
-    print(f"shape green {green_filter.shape}")
     plt.imshow(green_filter)
     plt.show()
     return green_filter
@@ -47,7 +44,6 @@ def ft_blue(array: np.array) -> np.array:
     blue_filter = array.copy()
     blue_filter[:, :, 0] = 0
     blue_filter[:, :, 1] = 0
-    print(f"shape blue {blue_filter.shape}")
     plt.imshow(blue_filter)
     plt.show()
     return blue_filter

@@ -7,6 +7,7 @@ def main():
     """
     Loads an image, crops it to a square, converts it to grayscale,
     and displays it after a manual transposition.
+    Print its shape before and after transpose.
     """
     try:
         image_np = load_image()

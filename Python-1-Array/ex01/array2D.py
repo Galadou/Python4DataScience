@@ -2,7 +2,17 @@ import numpy as np
 
 
 def slice_me(family: list, start: int, end: int) -> list:
+    """
+    Print the shape of the given list, \
+    and return a list based on the provided start and end arg.
 
+    Args:
+        family (str): The list we want to slice.
+        start (int): Index for start the slice.
+        end (int): Index for end the slice.
+    Returns:
+        list: the family list given as param sliced.
+    """
     try:
         if not (isinstance(family, list)):
             raise AssertionError("family is not a list.")

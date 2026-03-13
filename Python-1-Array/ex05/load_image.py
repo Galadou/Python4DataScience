@@ -18,4 +18,5 @@ def ft_load(path: str) -> np.array:
         raise AssertionError("img is not in jpg or jpeg format.")
     img = img.convert("RGB")
     img_np = np.array(img)
+    print(f"The shape of image is {img_np.shape}")
     return img_np
