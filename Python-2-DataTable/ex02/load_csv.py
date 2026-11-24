@@ -10,11 +10,12 @@ def load(path: str) -> pd.DataFrame:
         path (str): The path of the dataset (csv).
     Returns:
         pd.DataFrame: the dataset loaded, or None if an error has occurred.
+    Raises:
+        ValueError: if the file format is not '.csv'.
     """
     try:
         ext = ".csv"
-        find_ext = path.find(".csv")
-        if find_ext == -1 or find_ext + len(ext) is not len(path):
+        if len(path) < 4 or path[-4:] != ext:
             raise ValueError("format must be in '.csv'.")
         data = pd.read_csv(path)
         print(f"Loading dataset of dimensions {data.shape}")

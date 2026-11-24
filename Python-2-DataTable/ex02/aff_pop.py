@@ -19,22 +19,25 @@ def transpose_txt_to_nb(value: str) -> float:
             return (float(value.replace('M', '')) * float(1000000))
         elif 'K' in value:
             return (float(value.replace('K', '')) * float(1000))
+    else:
+        raise ValueError("value should be a string.")
     return float(value)
 
 
-def main():
+def main() -> None:
     """
     Load population_total.csv, and create a plot with it,
     comparing 'France' and 'Belgium'.
+    Raises:
+        ValueError: if the file format is not '.csv'.
     """
     try:
         data = load("population_total.csv")
         if data is None:
             return
-        france_data = pd.DataFrame
-        belgium_data = pd.DataFrame
-
         france_data = data.query("country == 'France'")
+        if france_data is None or france_data.empty:
+            raise ValueError("No data for France.")
         fr_values = france_data.iloc[0, 1:252].apply(transpose_txt_to_nb)
         fr_years = france_data.columns[1:252]
         plt.plot(fr_years, fr_values, label="France", color="green")

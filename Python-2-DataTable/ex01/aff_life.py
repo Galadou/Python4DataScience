@@ -1,18 +1,20 @@
 from load_csv import load
 import matplotlib.pyplot as plt
-import pandas as pd
 
 
-def main():
+def main() -> None:
     """
     Load life_expectancy_years.csv, and create a plot with it, using 'France'.
+    Raises:
+        ValueError: if the file format is not '.csv'.
     """
     try:
         data = load("life_expectancy_years.csv")
         if data is None:
             return
-        france_data = pd.DataFrame
         france_data = data.query("country == 'France'")
+        if france_data is None or france_data.empty:
+            raise ValueError("No data for France.")
         values = france_data.iloc[0, 1:]
         years = france_data.columns[1:]
         plt.plot(years, values)
