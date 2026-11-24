@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 def ft_invert(array: np.array) -> np.array:
     """
-Inverts the color of the image received.
+    Inverts the color of the image received.
     """
     # Channels with 0 become 255 and conversely, channels with 255 become 0
     img_negatif = 255 - array

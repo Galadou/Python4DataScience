@@ -7,13 +7,17 @@ def slice_me(family: list, start: int, end: int) -> list:
     and return a list based on the provided start and end arg.
 
     Args:
-        family (str): The list we want to slice.
+        family (list): The list we want to slice.
         start (int): Index for start the slice.
         end (int): Index for end the slice.
     Returns:
         list: the family list given as param sliced.
     """
     try:
+        if not isinstance(start, int) or isinstance(start, bool):
+            raise AssertionError("start should be an integer.")
+        if not isinstance(end, int) or isinstance(end, bool):
+            raise AssertionError("end should be an integer.")
         if not (isinstance(family, list)):
             raise AssertionError("family is not a list.")
         if (len(family) == 0):

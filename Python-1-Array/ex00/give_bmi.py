@@ -19,10 +19,12 @@ def give_bmi(height: list[int | float], weight: list[int | float]) \
     """
     try:
         if not isinstance(height, list) \
-                or not all(isinstance(i, (int, float)) for i in height):
+                or not all(isinstance(i, (int, float))
+                           and not isinstance(i, bool) for i in height):
             raise AssertionError("height should take only integer or float.")
         if not isinstance(weight, list) \
-                or not all(isinstance(i, (int, float)) for i in weight):
+                or not all(isinstance(i, (int, float))
+                           and not isinstance(i, bool) for i in weight):
             raise AssertionError("weight should take only integer or float.")
         if len(height) != len(weight):
             raise AssertionError("weight and height have not the same size.")
@@ -55,8 +57,11 @@ def apply_limit(bmi: list[int | float], limit: int) -> list[bool]:
              true if above the limit.
     """
     try:
+        if not isinstance(limit, int) or isinstance(limit, bool):
+            raise AssertionError("limit should be an integer.")
         if not isinstance(bmi, list) \
-                or not all(isinstance(i, (int, float)) for i in bmi):
+                or not all(isinstance(i, (int, float))
+                           and not isinstance(i, bool) for i in bmi):
             raise AssertionError("bmi should take only integer or float.")
         np_bmi = np.array(bmi)
         result = np_bmi > limit
