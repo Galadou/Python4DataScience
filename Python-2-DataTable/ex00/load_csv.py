@@ -10,8 +10,6 @@ def load(path: str) -> pd.DataFrame:
         path (str): The path of the dataset (csv).
     Returns:
         pd.DataFrame: the dataset loaded, or None if an error has occurred.
-    Raises:
-        ValueError: if the file format is not '.csv'.
     """
     try:
         ext = ".csv"

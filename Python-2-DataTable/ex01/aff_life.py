@@ -5,8 +5,6 @@ import matplotlib.pyplot as plt
 def main() -> None:
     """
     Load life_expectancy_years.csv, and create a plot with it, using 'France'.
-    Raises:
-        ValueError: if the file format is not '.csv'.
     """
     try:
         data = load("life_expectancy_years.csv")

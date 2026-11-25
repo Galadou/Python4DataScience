@@ -1,6 +1,5 @@
 from load_csv import load
 import matplotlib.pyplot as plt
-import pandas as pd
 
 
 def transpose_txt_to_nb(value: str) -> float:
@@ -12,6 +11,8 @@ def transpose_txt_to_nb(value: str) -> float:
         value (str): The string you want to transpose.
     Returns:
         float: The value transposed to a float.
+    Raises:
+        ValueError: if the value is not a string.
     """
     if isinstance(value, str):
         value = value.upper()
@@ -28,8 +29,6 @@ def main() -> None:
     """
     Load population_total.csv, and create a plot with it,
     comparing 'France' and 'Belgium'.
-    Raises:
-        ValueError: if the file format is not '.csv'.
     """
     try:
         data = load("population_total.csv")
@@ -52,7 +51,7 @@ def main() -> None:
         plt.yticks([20000000, 40000000, 60000000], ["20M", "40M", "60M"])
         plt.xlabel("Year")
         plt.ylabel("Population")
-        plt.legend()
+        plt.legend(loc="lower right")
         plt.show()
 
     except KeyboardInterrupt as error:

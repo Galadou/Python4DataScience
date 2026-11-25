@@ -34,11 +34,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-    # ppp = ppp.set_index('country')
-    # Currently, the indexes are now the countries. This isn't done by default!
-    # ppp.loc['France'] to retrieve only the line for France.
-    # ppp.iloc[192] to retrieve only the line for 192.
-
-    # to retrieve only the line for France AND the year 1900 :
-    # ppp.loc['France', '1900']
